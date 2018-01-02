@@ -7,22 +7,23 @@ local System = tiny.system(class('system.graphic.load'))
 System.CONST= {
   RSVG = {
     BUNKER = RSVG:format('bunker'),
-    ENEMY = RSVG:format('enemy'),
+    ENEMY  = RSVG:format('enemy'),
     PLAYER = RSVG:format('player')
   }
 }
 
 function System:initialize()
   self.graphics = {}
-  self.filter = tiny.requireAll('graphic_key')
+  self.filter   = tiny.requireAll('graphic_key', tiny.rejectAll('graphic'))
 end
 
-function System:onAdd(entity)
-  local key = entity.graphic_key
-  if not self.graphics[key] then
-    self.graphics[key] = love.graphics.newImage(key)
+function System:onAdd(e)
+  if not self.graphics[e.graphic_key] then
+    self.graphics[e.graphic_key] = love.graphics.newImage(e.graphic_key)
   end
-  entity.graphic = self.graphics[key]
+  e.graphic = self.graphics[e.graphic_key]
+  e.width   = e.graphic:getWidth()
+  e.height  = e.graphic:getHeight()
 end
 
 return System
