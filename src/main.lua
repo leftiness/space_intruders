@@ -7,6 +7,8 @@ function love.load()
     require('system.graphic.load')(),
     require('system.graphic.draw')(),
     require('system.input.keyboard')(),
+    require('system.move')(),
+    require('system.player.control')(),
     require('entity.player')()
   )
 end
