@@ -1,11 +1,11 @@
 local class = require('lib.middleclass')
 
-local Loader = require('system.graphic.load')
+local Load = require('system.drawable.load')
 
-local Player = class('entity.player')
+local Entity = class('entity.player')
 
-function Player:initialize()
-  self.graphic_key = Loader.CONST.RSVG.PLAYER
+function Entity:initialize()
+  self.drawable_key = Load.RSVG.PLAYER
   self.width = 0
   self.height = 0
   self.isPlayer = true
@@ -18,4 +18,4 @@ function Player:initialize()
   self.speed = 1
 end
 
-return Player
+return Entity
