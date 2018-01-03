@@ -4,11 +4,13 @@ local world = nil
 
 function love.load()
   world = tiny.world(
-    require('system.graphic.load')(),
-    require('system.graphic.draw')(),
+    require('system.drawable.load')(),
+    require('system.drawable.draw')(),
     require('system.input.keyboard')(),
     require('system.move')(),
     require('system.player.control')(),
+    require('system.enemy.spawn')(),
+    require('system.enemy.invert')(),
     require('entity.player')()
   )
 end
