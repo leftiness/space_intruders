@@ -9,8 +9,11 @@ function love.load()
     require('system.input.keyboard')(),
     require('system.move')(),
     require('system.player.control')(),
+    require('system.player.shoot')(),
     require('system.enemy.spawn')(),
     require('system.enemy.invert')(),
+    require('system.bullet.spawn')(),
+    require('system.bullet.prune')(),
     require('entity.player')()
   )
 end
