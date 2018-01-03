@@ -6,6 +6,7 @@ local System = tiny.system(class('system.drawable.load'))
 
 System.RSVG = {
   BUNKER = RSVG:format('bunker'),
+  BULLET = RSVG:format('bullet'),
   ENEMY  = RSVG:format('enemy'),
   PLAYER = RSVG:format('player')
 }
