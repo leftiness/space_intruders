@@ -1,4 +1,5 @@
 name_project=space_intruders
+version=0.0.1-1
 
 dir_src=$(CURDIR)/src
 dir_svg=$(dir_src)/asset/svg
@@ -9,6 +10,9 @@ dir_lib=$(dir_rocktree)/share/lua/5.1
 dir_target=$(CURDIR)/target
 dir_target_lib=$(dir_target)/lib
 dir_rsvg=$(dir_target)/asset/rsvg
+
+file_rockspec=$(CURDIR)/$(name_project)-$(version).rockspec
+file_hc_rockspec=$(CURDIR)/hardoncollider-0.1-0.rockspec
 
 file_love=$(dir_target)/$(name_project).love
 
@@ -21,11 +25,14 @@ all: love
 
 install: # TODO
 
-$(dir_target) $(dir_rsvg):
+$(dir_target) $(dir_rsvg) $(dir_rocktree):
 	mkdir -p $@
 
-luarocks:
-	luarocks --tree=$(dir_rocktree) make >/dev/null
+luarocks: hardoncollider
+	luarocks --tree=$(dir_rocktree) make $(file_rockspec)
+
+hardoncollider:
+	luarocks --tree=$(dir_rocktree) install $(file_hc_rockspec)
 
 $(dir_rsvg)/%.png: | $(dir_rsvg)
 	rsvg $(dir_svg)/$*.svg $(dir_rsvg)/$*.png

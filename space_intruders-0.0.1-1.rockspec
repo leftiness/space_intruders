@@ -12,6 +12,7 @@ description = {
 }
 dependencies = {
    "lua == 5.1",
+   "hardoncollider == 0.1-0",
    "middleclass == 4.1-0",
    "tiny-ecs == 1.3-3"
 }
