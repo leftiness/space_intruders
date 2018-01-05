@@ -1,7 +1,7 @@
 local tiny = require('lib.tiny')
 local class = require('lib.middleclass')
 
-local System = tiny.processingSystem(class('system.drawable.draw'))
+local System = tiny.processingSystem(class('system.draw'))
 
 function System:initialize()
   self.filter = tiny.requireAll('drawable', 'x', 'y')

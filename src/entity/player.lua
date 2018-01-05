@@ -1,13 +1,15 @@
 local class = require('lib.middleclass')
-
-local Load = require('system.drawable.load')
+local hard = require('lib.hardoncollider')
 
 local Entity = class('entity.player')
 
+local DRAWABLE = nil
+
 function Entity:initialize()
-  self.drawable_key = Load.RSVG.PLAYER
-  self.width = 0
-  self.height = 0
+  DRAWABLE = DRAWABLE or love.graphics.newImage('asset/rsvg/player.png')
+  self.drawable = DRAWABLE
+  self.width = DRAWABLE:getWidth()
+  self.height = DRAWABLE:getHeight()
   self.isPlayer = true
   self.left = false
   self.right = false
@@ -20,6 +22,9 @@ function Entity:initialize()
   self.timeout = 0
   self.cooldown = 1
   self.shoot = false
+  self.faction = 'player'
+  self.hitbox = hard.rectangle(self.x, self.y, self.width, self.height)
+  self.hitbox.entity = self
 end
 
 return Entity

@@ -10,6 +10,9 @@ end
 function System:process(e, dt)
   e.x = e.x + e.dx
   e.y = e.y + e.dy
+  if e.hitbox then
+    e.hitbox:move(e.dx, e.dy)
+  end
 end
 
 return System
