@@ -12,7 +12,8 @@ end
 function System:process(e, dt)
   if e.shoot then
     local centered_x = (e.width / 2) - 1 + e.x
-    self.world:add(Bullet(centered_x, e.y, e.faction))
+    local dy = e.isPlayer and -1 or 1
+    self.world:add(Bullet(centered_x, e.y, dy, e.faction))
     e.shoot = false
   end
 end
