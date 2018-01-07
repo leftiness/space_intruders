@@ -15,6 +15,7 @@ function love.load()
     require('system.bullet.prune')(),
     require('system.hitbox.collide')(),
     require('system.hitbox.prune')(),
+    require('system.bunker.spawn')(),
     require('entity.player')()
   )
 
