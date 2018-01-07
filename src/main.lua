@@ -11,6 +11,8 @@ function love.load()
     require('system.player.control')(),
     require('system.player.shoot')(),
     require('system.enemy.spawn')(),
+    require('system.enemy.move')(),
+    require('system.enemy.invade')(),
     require('system.bullet.spawn')(),
     require('system.bullet.prune')(),
     require('system.hitbox.collide')(),
