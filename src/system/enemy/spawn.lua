@@ -9,20 +9,14 @@ local TARGET = 15
 
 function System:initialize()
   self.filter = tiny.requireAll('isEnemy')
-  self.spawn = true
-end
-
-function System:onRemove(e)
-  self.spawn = #self.entities == 0
 end
 
 function System:onModify(dt)
-  if not self.spawn then
+  if #self.entities ~= 0 then
     return
-  elseif #self.entities < TARGET then
-    self.world:add(Enemy(#self.entities))
-  else
-    self.spawn = false
+  end
+  for i = 0, TARGET - 1 do
+    self.world:add(Enemy(i))
   end
 end
 
