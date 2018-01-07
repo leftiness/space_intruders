@@ -13,6 +13,7 @@ function love.load()
     require('system.enemy.spawn')(),
     require('system.enemy.move')(),
     require('system.enemy.invade')(),
+    require('system.enemy.shoot')(),
     require('system.bullet.spawn')(),
     require('system.bullet.prune')(),
     require('system.hitbox.collide')(),

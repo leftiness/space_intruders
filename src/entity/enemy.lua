@@ -23,6 +23,7 @@ function Entity:initialize(index)
   self.faction = 'enemy'
   self.hitbox = hard.rectangle(self.x, self.y, self.width, self.height)
   self.hitbox.entity = self
+  self.shoot = false
 end
 
 return Entity

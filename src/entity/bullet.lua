@@ -5,7 +5,7 @@ local Entity = class('entity.bullet')
 
 local DRAWABLE = nil
 
-function Entity:initialize(x, y, faction)
+function Entity:initialize(x, y, dy, faction)
   DRAWABLE = DRAWABLE or love.graphics.newImage('asset/rsvg/bullet.png')
   self.drawable = DRAWABLE
   self.width = DRAWABLE:getWidth()
@@ -14,7 +14,7 @@ function Entity:initialize(x, y, faction)
   self.x = x
   self.y = y
   self.dx = 0
-  self.dy = -1
+  self.dy = dy
   self.faction = faction
   self.hitbox = hard.rectangle(self.x, self.y, self.width, self.height)
   self.hitbox.entity = self
