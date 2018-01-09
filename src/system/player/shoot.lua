@@ -4,7 +4,13 @@ local class = require('lib.middleclass')
 local System = tiny.processingSystem(class('system.player.shoot'))
 
 function System:initialize()
-  self.filter = tiny.requireAll('isPlayer', 'timeout', 'cooldown')
+  self.filter = tiny.requireAll(
+    'isPlayer',
+    'timeout',
+    'cooldown',
+    'shoot',
+    'space'
+  )
 end
 
 function System:process(e, dt)

@@ -1,28 +1,30 @@
 local class = require('lib.middleclass')
-local hard = require('lib.hardoncollider')
+
+local Draw = require('mixin.draw')
+local Hitbox = require('mixin.hitbox')
 
 local Entity = class('entity.bunker')
 
-local DRAWABLE = nil
 local COLUMNS = 6
 local SPACER = 10
 local GROUPING = 2
 local GROUP_SPACER = 20
 
 function Entity:initialize(index)
-  DRAWABLE = DRAWABLE or love.graphics.newImage('asset/rsvg/bunker.png')
-  self.drawable = DRAWABLE
-  self.width = DRAWABLE:getWidth()
-  self.height = DRAWABLE:getHeight()
-  self.index = index
-  self.row = 1 + math.floor(self.index / COLUMNS)
-  self.column = 1 + self.index % COLUMNS
-  self.group = math.ceil(self.column / GROUPING)
-  self.x = (self.group * GROUP_SPACER) + (self.column * SPACER)
-  self.y = love.graphics.getHeight() - (2 * self.height) - (self.row * SPACER)
-  self.faction = 'bunker'
-  self.hitbox = hard.rectangle(self.x, self.y, self.width, self.height)
-  self.hitbox.entity = self
+  local row = 1 + math.floor(index / COLUMNS)
+  local column = 1 + index % COLUMNS
+  local group = math.ceil(column / GROUPING)
+
+  local x = (group * GROUP_SPACER) + (column * SPACER)
+  local y = love.graphics.getHeight() - (2 * self.h) - (row * SPACER)
+
+  self.x = x
+  self.y = y
 end
+
+Entity:include(
+  Draw('/asset/rsvg/bunker.png'),
+  Hitbox('bunker')
+)
 
 return Entity

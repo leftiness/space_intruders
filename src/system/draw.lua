@@ -9,18 +9,7 @@ function System:initialize()
 end
 
 function System:process(e, dt)
-  love.graphics.draw(
-    e.drawable,
-    e.x,
-    e.y,
-    e.r,
-    e.sx,
-    e.sy,
-    e.ox,
-    e.oy,
-    e.kx,
-    e.ky
-  )
+  love.graphics.draw(e.drawable, e.x, e.y)
 end
 
 return System
