@@ -1,29 +1,29 @@
 local class = require('lib.middleclass')
-local hard = require('lib.hardoncollider')
+
+local Draw = require('mixin.draw')
+local Hitbox = require('mixin.hitbox')
+local Shoot = require('mixin.shoot')
 
 local Entity = class('entity.enemy')
 
-local DRAWABLE = nil
 local COLUMNS =  5
 local SPACER  = 20
 
 function Entity:initialize(index)
-  DRAWABLE = DRAWABLE or love.graphics.newImage('asset/rsvg/enemy.png')
-  self.drawable = DRAWABLE
-  self.width = DRAWABLE:getWidth()
-  self.height = DRAWABLE:getHeight()
+  local row = 1 + math.floor(index / COLUMNS)
+  local column = 1 + index % COLUMNS
+  local x = column * SPACER
+  local y = row * SPACER
+
+  self.x = x
+  self.y = y
   self.isEnemy = true
-  self.index = index
-  self.row = 1 + math.floor(self.index / COLUMNS)
-  self.column = 1 + self.index % COLUMNS
-  self.x = self.column * SPACER
-  self.y = self.row * SPACER
-  self.dx = 0
-  self.dy = 0
-  self.faction = 'enemy'
-  self.hitbox = hard.rectangle(self.x, self.y, self.width, self.height)
-  self.hitbox.entity = self
-  self.shoot = false
 end
+
+Entity:include(
+  Draw('asset/rsvg/enemy.png'),
+  Hitbox('enemy'),
+  Shoot()
+)
 
 return Entity

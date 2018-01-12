@@ -1,30 +1,32 @@
 local class = require('lib.middleclass')
-local hard = require('lib.hardoncollider')
+
+local Draw = require('mixin.draw')
+local Move = require('mixin.move')
+local Hitbox = require('mixin.hitbox')
+local Shoot = require('mixin.shoot')
 
 local Entity = class('entity.player')
 
-local DRAWABLE = nil
-
 function Entity:initialize()
-  DRAWABLE = DRAWABLE or love.graphics.newImage('asset/rsvg/player.png')
-  self.drawable = DRAWABLE
-  self.width = DRAWABLE:getWidth()
-  self.height = DRAWABLE:getHeight()
+  local x = love.graphics.getWidth() / 2
+  local y = love.graphics.getHeight() - 10
+
+  self.x = x
+  self.y = y
   self.isPlayer = true
   self.left = false
   self.right = false
   self.space = false
-  self.x = love.graphics.getWidth() / 2
-  self.y = love.graphics.getHeight() - 10
-  self.dx = 0
-  self.dy = 0
   self.speed = 1
   self.timeout = 0
   self.cooldown = 1
-  self.shoot = false
-  self.faction = 'player'
-  self.hitbox = hard.rectangle(self.x, self.y, self.width, self.height)
-  self.hitbox.entity = self
 end
+
+Entity:include(
+  Draw('asset/rsvg/player.png'),
+  Move(),
+  Hitbox('player'),
+  Shoot()
+)
 
 return Entity
