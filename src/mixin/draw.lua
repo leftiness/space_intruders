@@ -17,8 +17,6 @@ function Mixin:initialize(key, x, y)
   self.h = drawable:getHeight() or 0
   self.x = x or 0
   self.y = y or 0
-  self.sx = 1
-  self.sy = 1
 end
 
 return Mixin

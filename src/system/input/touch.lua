@@ -12,7 +12,7 @@ function System:process(e, dt)
     return
   end
 
-  local w, h = love.graphics.getDimensions()
+  local w, h = love.window.getMode()
 
   for i, id in pairs(love.touch.getTouches()) do
     local x, y = love.touch.getPosition(id)

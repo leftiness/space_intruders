@@ -8,11 +8,9 @@ function System:initialize()
 end
 
 function System:process(e, dt)
-  local out = e.x < 0
-    or e.y < 0
-    or e.x > love.graphics.getWidth()
-    or e.y > love.graphics.getHeight()
-  if out then
+  local w, h = love.graphics.getCanvas():getDimensions()
+
+  if e.x < 0 or e.y < 0 or e.x > w or e.y > h then
     self.world:remove(e)
   end
 end

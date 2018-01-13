@@ -10,15 +10,14 @@ function System:initialize()
     'right',
     'speed',
     'w',
-    'dx',
-    'sx'
+    'dx'
   )
 end
 
 function System:process(e, dt)
   if e.left and e.x > 0 then
     e.dx = -e.speed
-  elseif e.right and e.x * e.sx < love.graphics.getWidth() - (e.w * e.sx) then
+  elseif e.right and e.x < love.graphics.getCanvas():getWidth() - e.w then
     e.dx = e.speed
   else
     e.dx = 0

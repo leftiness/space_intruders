@@ -4,19 +4,14 @@ local class = require('lib.middleclass')
 local System = tiny.processingSystem(class('system.enemy.invade'))
 
 function System:initialize()
-  self.filter = tiny.requireAll('isEnemy', 'x', 'y', 'sx', 'sy')
+  self.filter = tiny.requireAll('isEnemy', 'x', 'y')
 end
 
 function System:process(e, dt)
-  local x = e.x * e.sx
-  local y = e.y * e.sy
+  local x, y = e.x, e.y
+  local w, h = love.graphics.getCanvas():getDimensions()
 
-  local out = x < 0
-    or y < 0
-    or x > love.graphics.getWidth()
-    or y > love.graphics.getHeight()
-
-  if out then
+  if x < 0 or y < 0 or x > w or y > h then
     love.event.quit()
   end
 end
