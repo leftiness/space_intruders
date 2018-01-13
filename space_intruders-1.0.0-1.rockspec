@@ -1,5 +1,5 @@
 package = "space_intruders"
-version = "0.0.1-1"
+version = "1.0.0-1"
 source = {
    url = "git://github.com/leftiness/space_intruders.git",
    branch = "master"
