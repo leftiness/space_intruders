@@ -1,5 +1,5 @@
 name_project=space_intruders
-version=0.0.1-1
+version=1.0.0-1
 
 dir_src=$(CURDIR)/src
 dir_svg=$(dir_src)/asset/svg
