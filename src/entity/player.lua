@@ -8,11 +8,10 @@ local Shoot = require('mixin.shoot')
 local Entity = class('entity.player')
 
 function Entity:initialize()
-  local x = love.graphics.getWidth() / 2
-  local y = love.graphics.getHeight() - 10
+  local w, h = love.graphics.getCanvas():getDimensions()
 
-  self.x = x
-  self.y = y
+  self.x = w / 2
+  self.y = h - 10
   self.isPlayer = true
   self.left = false
   self.right = false

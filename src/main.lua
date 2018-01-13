@@ -6,7 +6,6 @@ local DEBUG = false
 function love.load()
   world = tiny.world(
     require('system.draw')(),
-    require('system.scale')(),
     require('system.input.keyboard')(),
     require('system.input.touch')(),
     require('system.move')(),
@@ -37,8 +36,4 @@ end
 
 function love.draw()
   tiny.update(world, 0, tiny.filter('isDrawSystem'))
-end
-
-function love:resize(w, h)
-  tiny.update(world, 0, tiny.filter('isScaleSystem'))
 end
