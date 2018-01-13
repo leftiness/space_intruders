@@ -8,6 +8,7 @@ function love.load()
     require('system.draw')(),
     require('system.scale')(),
     require('system.input.keyboard')(),
+    require('system.input.touch')(),
     require('system.move')(),
     require('system.player.control')(),
     require('system.player.shoot')(),
