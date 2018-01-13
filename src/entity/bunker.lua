@@ -16,7 +16,7 @@ function Entity:initialize(index)
   local group = math.ceil(column / GROUPING)
 
   local x = (group * GROUP_SPACER) + (column * SPACER)
-  local y = love.graphics.getHeight() - (2 * self.h) - (row * SPACER)
+  local y = (11 * self.h) + (row * SPACER)
 
   self.x = x
   self.y = y
